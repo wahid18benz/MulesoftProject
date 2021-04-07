@@ -14,7 +14,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<app.runtime>4.3.0-20201013</app.runtime>
+		<app.runtime>4.3.0</app.runtime>
 		<mule.maven.plugin.version>3.3.5</mule.maven.plugin.version>
 	</properties>
 
@@ -24,6 +24,25 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-clean-plugin</artifactId>
 				<version>3.0.0</version>
+				<extensions> true </extensions>
+				<configuration>  
+					<cloudHubDeployment>
+						<url>https://anypoint.mulesoft.com</url>
+						<muleVersion>${mule.version}</muleVersion>
+						<!-- Deploy user Parameter -->
+						<username>${anypoint.username} </username>
+						<password>${anypoint.password}</password>
+					
+						<environement>${env} </environement>
+						<applicationName>${appname}</applicationName>
+						<businessGroup>${business}</businessGroup>
+						<workerType>${vCore}</workerType>
+						<workers>${workers}</workers>
+						<objectStoreV2>true </objectStoreV2>
+					<classifier>mule-application</classifier>	
+					</cloudHubDeployment>
+				</configuration>
+				
 			</plugin>
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
